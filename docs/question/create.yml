@@ -1,0 +1,46 @@
+/api/v1/questions/create:
+  post:
+    tags:
+      - Question
+    security:
+      - bearerAuth: []
+    description: Creation of a new question
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createQuestion' 
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": true,
+                  "message": "Pregunta creada exitosamente"
+              }
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Error al crear la pregunta"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }

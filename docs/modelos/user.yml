@@ -1,0 +1,198 @@
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: number
+      first_name:
+        type: string
+      second_name:
+        type: string
+      surname:
+        type: string
+      second_sur_name:
+        type: string
+      type_document:
+        type: number
+      document_number:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      rol_id:
+        type: number
+      phone:
+        type: string
+      state:
+        type: boolean
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+
+components:
+  schemas:
+    login:
+      type: object
+      properties:
+          email:
+              type: string
+              description: User email
+          password:
+              type: string
+              description: User password
+      required:
+          - email
+          - password
+      example:
+          email: cassandra@unal.edu.co
+          password: cassandra03
+
+    createUser:
+      type: object
+      properties:
+          firstName:
+              type: string
+              description: User first name
+          secondName:
+              type: string
+              description: User second name
+          surname:
+              type: string
+              description: User surname
+          secondSurName:
+              type: string
+              description: User second surname
+          typeDocument:
+              type: number
+              description: User type document
+          documentNumber:
+              type: string
+              description: User document number
+          email:
+              type: string
+              description: User email
+          password:
+              type: string
+              description: User password
+          phone:
+              type: string
+              description: User phone
+          rolId:
+              type: number
+              description: User rol id
+      required:
+          - firstName
+          - secondName
+          - surname
+          - secondSurName
+          - typeDocument
+          - documentNumber
+          - email
+          - password
+          - phone
+      example:
+          firstName: Cassandra
+          secondName: Maria
+          surname: Sora
+          secondSurName: Kalo
+          typeDocument: 1
+          documentNumber: '123456789'
+          email: cassandra@unal.edu.co
+          password: cassandra03
+          phone: '123456789'
+          
+    getUsers:
+      type: object
+      properties:
+          state:
+              type: boolean
+              description: Request state
+          message:
+              type: string
+              description: Request message
+          users:
+              type: array
+              items:
+                  type: object
+                  properties:
+                      first_name:
+                          type: string
+                          description: User first name
+                      second_name:
+                          type: string
+                          description: User second name
+                      surname:
+                          type: string
+                          description: User surname
+                      second_sur_name:
+                          type: string
+                          description: User second surname
+                      type_document:
+                          type: number
+                          description: User type document
+                      document_number:
+                          type: string
+                          description: User document number
+                      email:
+                          type: string
+                          description: User email
+                      phone:
+                          type: string
+                          description: User phone number
+      example:
+          state: true
+          message: Listado de estudiantes
+          users: [
+              {
+                  first_name: Ulises,
+                  second_name: Sacro,
+                  surname: Monte,
+                  second_sur_name: Jola,
+                  type_document: 2,
+                  document_number: '123456789',
+                  email: ulises@unal.edu.co
+              }
+          ]
+
+    getUser:
+      type: object
+      properties:
+          firstName:
+              type: string
+              description: User first name
+          secondName:
+              type: string
+              description: User second name
+          surname:
+              type: string
+              description: User surname
+          secondSurName:
+              type: string
+              description: User second surname
+          typeDocument:
+              type: number
+              description: User type document
+          documentNumber: 
+              type: string
+              descripton: User document number
+          email:
+              type: string
+              description: User email
+          phone:
+              type: string
+              description: User phone number
+      example:
+        {
+            firstName: "Carmen",
+            secondName: "Electra",
+            surname: "Kalo",
+            secondSurName: "Sora",
+            typeDocument: 1,
+            documentNumber: "1234537932",
+            email: "carmen@unal.edu.co",
+            phone: "320000034"
+        }

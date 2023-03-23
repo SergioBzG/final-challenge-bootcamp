@@ -1,0 +1,73 @@
+definitions:
+  Answer:
+    type: object
+    properties:
+      id:
+        type: number
+      option:
+        type: string
+      is_correct:
+        type: boolean
+      question_id:
+        type: number
+      state:
+        type: boolean
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+
+components:
+  schemas:
+    getOptions:
+      type: object
+      properties:
+          state:
+              type: boolean
+              description: State of the request
+          message:
+              type: string
+              description: Message of the request
+          options:
+              type: array
+              items:
+                  type: object
+                  properties:
+                      id: 
+                          type: number
+                          description: Id of the option
+                      option:
+                          type: string
+                          description: Option
+      example:
+        {
+          state: true,
+          message: Listado de opciones,
+          options: [
+              {
+                  id: 37,
+                  option: Vida
+              },
+              {
+                  id: 38,
+                  option: Morte
+              }
+          ]
+        }
+    
+    updateOption:
+      type: object
+      properties:
+          option:
+              type: string
+              description: New option
+          iscorrect:
+              type: boolean
+              description: New state of the option
+      example:
+        {
+          opcion: Vie,
+          iscorrect: true
+        }

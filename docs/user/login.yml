@@ -1,0 +1,51 @@
+/api/v1/login:
+  post:
+    tags:
+      - Login
+    security: []
+    description: User login
+    requestBody:
+      content:
+        application/json:
+          schema:
+            '$ref': '#/components/schemas/login'      
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                id:
+                  type: number
+                name:
+                  type: string
+                role:
+                  type: string
+                message:
+                  type: string
+                token:
+                  type: string
+            example:
+              {
+                  "state": true,
+                  "id": 3,
+                  "name": "Carmen Electra Kalo Sora",
+                  "role": "administrador",
+                  "message": "Ingreso exitoso",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ2FybWVuIiwiaWQiOjMsImRvY3VtZW5OdW1iZXIiOiIxMjM0NTM3OTMyIiwiaWF0IjoxNjc5NDYzNTI0LCJleHAiOjE2Nzk0NjQxMjR9.fmNVN4fi-bmHypNKcLpJ-ODbNUns_0E7L9DlHwagRuQ"
+              }
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "contraseña o email ivalido"
+              }

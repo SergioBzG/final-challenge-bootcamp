@@ -1,0 +1,16 @@
+definitions:
+  Rol:
+    type: object
+    properties:
+      id:
+        type: number
+      name:
+        type: string
+      state:
+        type: boolean
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time

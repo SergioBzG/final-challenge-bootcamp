@@ -1,0 +1,38 @@
+/api/v1/user/getUsers:
+  get:
+    tags:
+      - User
+    security:
+      - bearerAuth: []
+    description: Get all users
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getUsers'
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Fallo en el listado de estudiantes"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }

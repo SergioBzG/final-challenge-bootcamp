@@ -1,0 +1,9 @@
+definitions:
+  Response:
+    type: object
+    properties:
+      state:
+        type: boolean
+      message:
+        type: string
+        

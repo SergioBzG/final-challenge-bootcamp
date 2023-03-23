@@ -1,0 +1,45 @@
+/api/v1/questions/getOptions/{id_question}:
+  get:
+    tags:
+      - Answer
+    security:
+      - bearerAuth: []
+    description: Get a question options
+    parameters:
+      - in: path
+        name: id_question
+        schema:
+          type: integer
+        required: true
+        description: Numeric id of the question to get options
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getOptions'
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Error al obtener el listado de opciones"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }

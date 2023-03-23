@@ -1,0 +1,46 @@
+/api/v1/user/create:
+  post:
+    tags:
+      - User
+    security:
+      - bearerAuth: []
+    description: Creation of a new user
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createUser'      
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": true,
+                  "message": "Estudiante creado correctamente"
+              }
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Fallo en la creación del estudiante"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }

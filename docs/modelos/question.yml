@@ -1,0 +1,102 @@
+definitions:
+  Question:
+    type: object
+    properties:
+      id:
+        type: number
+      question: 
+        type: string
+      state:
+        type: boolean
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+
+components:
+  schemas:
+    createQuestion:
+      type: object
+      properties:
+          question:
+              type: string
+              description: Question
+          options:
+              type: array
+              items:
+                  type: object
+                  properties:
+                      opcion:
+                          type: string
+                          description: Option
+                      iscorrect:
+                          type: boolean
+                          description: Correct or not
+      required:
+          - question
+          - options
+      example:
+        {
+            question: ¿Tu y yo que somos?,
+            options: [
+                  {
+                      opcion: algo,
+                      iscorrect: true
+                  }, 
+                  {
+                      opcion: casi algo,
+                      iscorrect: false
+                  },{
+                      opcion: amigos,
+                      iscorrect: false
+                  },{
+                      opcion: novios,
+                      iscorrect: false
+                  }
+              ]
+        }
+
+    getQuestions:
+      type: object
+      properties:
+          state:
+              type: boolean
+              description: State of the request
+          questions:
+              type: array
+              items:
+                  type: object
+                  properties:
+                      question: 
+                          type: string
+                          description: Question
+                      id: 
+                          type: number
+                          description: Id of the question
+      example:
+        {
+            state: true,
+            questions: [
+                {
+                    question: ¿Test questions?,
+                    id: 9
+                },
+                {
+                    question: ¿Test update45?,
+                    id: 3
+                }
+            ]
+        }
+    
+    updateQuestion:
+      type: object
+      properties:
+          question:
+              type: string
+              description: New question
+      example:
+        {
+            question: ¿Existe dios?
+        }

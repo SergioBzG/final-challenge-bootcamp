@@ -1,0 +1,53 @@
+/api/v1/user/update/{id_user}:
+  put:
+    tags:
+      - User
+    security:
+      - bearerAuth: []
+    description: Update user by id
+    parameters:
+      - in: path
+        name: id_user
+        schema:
+          type: integer
+        required: true
+        description: Numeric id of the user to update
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/getUser'  #It's the same schema as the one in the getUser endpoint 
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": true,
+                  "message": "Se actualizo correctamente"
+              }
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Error al actualizar"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }

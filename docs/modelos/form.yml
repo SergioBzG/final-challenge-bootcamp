@@ -1,0 +1,18 @@
+definitions:
+  Form:
+    type: object
+    properties:
+      id:
+        type: number
+      student_id:
+        type: number
+      answer_id:
+        type: number
+      state:
+        type: boolean
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time

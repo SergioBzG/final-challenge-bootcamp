@@ -1,0 +1,45 @@
+/api/v1/user/getUser/{id_user}:
+  get:
+    tags:
+      - User
+    security:
+      - bearerAuth: []
+    description: Get user by id
+    parameters:
+      - in: path
+        name: id_user
+        schema:
+          type: integer
+        required: true
+        description: Numeric id of the user to get
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getUser'
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": 'Error al consultar el detalle del usuario'
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }

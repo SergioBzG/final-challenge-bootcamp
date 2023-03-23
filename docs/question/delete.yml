@@ -1,0 +1,50 @@
+/api/v1/questions/deleteQuestion/{id_question}:
+  delete:
+    tags:
+      - Question
+    security:
+      - bearerAuth: []
+    description: Delete a question by id
+    parameters:
+      - in: path
+        name: id_question
+        schema:
+          type: integer
+        required: true
+        description: Numeric id of the question to delete
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Pregunta Eliminada con exito"
+              }
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Error al eliminar la pregunta"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }
