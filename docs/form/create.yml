@@ -1,0 +1,46 @@
+/api/v1/form/postquestions:
+  post:
+    tags:
+      - Form
+    security:
+      - bearerAuth: []
+    description: Creation of a new form
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createForm' 
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": true,
+                  "message": "Respuestas almacenadas con exito"
+              }
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "No se pudieron almacenar las respuestas"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }

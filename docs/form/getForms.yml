@@ -1,0 +1,38 @@
+/api/v1/form/getquestions:
+  get:
+    tags:
+      - Form
+    security:
+      - bearerAuth: []
+    description: Get all forms
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getForms'
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Error al obtener el listado"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }

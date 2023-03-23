@@ -16,3 +16,91 @@ definitions:
       updated_at:
         type: string
         format: date-time
+
+components:
+  schemas:
+    createForm:
+      type: object
+      properties:
+          studenteId:
+              type: number
+              description: Student id that fill the form
+          answers:
+              type: array
+              description: Array of answers
+              items:
+                  type: number
+      required:
+          - studenteId
+          - answers
+      example:
+        {
+            estudianteId: 4,
+            answers: [7, 11, 10]
+        }
+    
+    getForms:
+      type: object
+      properties:
+          state: 
+              type: boolean
+              description: State of the request
+          questions:
+              type: array
+              description: Array of questions
+              items:
+                  type: object
+                  properties:
+                      question: 
+                          type: string
+                          description: Question
+                      id: 
+                          type: number
+                          description: Question id
+                      options: 
+                          type: array
+                          description: Options of each question
+                          items:
+                              type: object
+                              properties:
+                                  id: 
+                                      type: number
+                                      description: Option id
+                                  option: 
+                                      type: string
+                                      description: Option
+                                  question_id: 
+                                      type: number
+                                      description: Question id 
+      example:
+        {
+            state: true,
+            questions: [
+                {
+                    question: ¿Test update45?,
+                    id: 3,
+                    options: [
+                        {
+                            id: 9,
+                            option: viernes,
+                            question_id: 3
+                        },
+                        {
+                            id: 11,
+                            option: lunes,
+                            question_id: 3
+                        },
+                        {
+                            id: 12,
+                            option: jueves,
+                            question_id: 3
+                        },
+                        {
+                            id: 10,
+                            option: Test option,
+                            question_id: 3
+                        }
+                    ]
+                }
+            ]
+        }
