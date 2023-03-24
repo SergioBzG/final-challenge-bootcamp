@@ -14,3 +14,19 @@ definitions:
       updated_at:
         type: string
         format: date-time
+
+components:
+  schemas:
+    createRol:
+      type: object
+      properties:
+          name:
+            type: string
+          state:
+            type: boolean
+      example:
+        {
+          "name": "Administrador",
+          "state": true
+        }
+  

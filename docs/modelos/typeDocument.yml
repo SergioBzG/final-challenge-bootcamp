@@ -14,3 +14,18 @@ definitions:
       updated_at:
         type: string
         format: date-time
+
+components:
+  schemas:
+    createTypeDocument:
+      type: object
+      properties:
+          name:
+            type: string
+          state:
+            type: boolean
+      example:
+        {
+          "name": "CC",
+          "state": true
+        }

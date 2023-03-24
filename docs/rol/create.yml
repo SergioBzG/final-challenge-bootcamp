@@ -1,0 +1,46 @@
+/api/v1/rol/create:
+  post:
+    tags:
+      - Role
+    security:
+      - bearerAuth: []
+    description: Creation of a new role
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createRol' 
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": true,
+                  "message": "Rol creado correctamente"
+              }
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Error en el servidor"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }

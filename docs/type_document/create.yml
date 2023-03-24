@@ -1,0 +1,46 @@
+/api/v1/type-document/create:
+  post:
+    tags:
+      - Type Document
+    security:
+      - bearerAuth: []
+    description: Creation of a new type of document
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/createTypeDocument' 
+    responses:
+      200:
+        description: Successful request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": true,
+                  "message": "TypeDocument creado correctamente"
+              }
+      400:
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Error en el servidor"
+              }
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              '$ref': '#/definitions/Response'
+            example:
+              {
+                  "state": false,
+                  "message": "Falta el token de autorizacion"
+              }
